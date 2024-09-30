@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <title>Stores</title>
+</head>
+<body>
+    <section>
+        <h1>Stores List</h1>
+        <div class="stores_list">
+            {% for store in content %}
+                <div class="store">
+                    <h2>{{ store.name }}</h2>
+                    <ul>
+                        {% if store.products %}
+                            {% for product in store.products %}
+                                <li>{{ product.name }} - ${{ product.price }}</li>
+                            {% endfor %}
+                        {% else %}
+                            <li>No products in this store.</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
